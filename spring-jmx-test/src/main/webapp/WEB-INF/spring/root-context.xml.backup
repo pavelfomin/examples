@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:sec="http://www.springframework.org/schema/security" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+       					http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<context:component-scan base-package="tst.jmx" />
+    
+    <bean id="mbeanServer" class="org.springframework.jmx.support.MBeanServerFactoryBean">
+		<property name="locateExistingServerIfPossible" value="true">
+		</property>
+	</bean>
+
+	<bean id="jmxExporter" class="org.springframework.jmx.export.MBeanExporter"
+		lazy-init="false">
+		<property name="beans">
+			<map>
+				<entry key="myapp:type=logging,name=Log4jStandard" value-ref="Log4jStandard"></entry>
+				<!-- <entry key="myapp:type=logging,name=CustomConfig" value-ref="customConfig"></entry> -->
+			</map>
+		</property>
+	</bean>
+
+	<bean id="Log4jStandard" class="org.apache.log4j.jmx.HierarchyDynamicMBean"></bean>
+	<bean id="customConfig" class="tst.jmx.log4j.Log4jConfigurator"></bean>
+</beans>
