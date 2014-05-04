@@ -1,6 +1,6 @@
 Servlet Test
 ===========
 
-Simple jee servlet project with one servlet and a test case the simulates the http load.
+Simple jee web project with one servlet and a test case that simulates the http load.
 
-Application deployed in Tomcat 7 with the default startup parameters processed 100,000 requests from 100 concurrent client threads in under 10 seconds. During the test, Tomcat server created more than 100 servlet threads to process the requests. The used heap size did not exceed 50M (see [Screen shot of the VisualVM monitor page](https://raw.githubusercontent.com/pavelfomin/examples/master/servlet-test/docs/tomcat.monitor.png)).
+Application deployed in Tomcat 7 with the default startup parameters processed 100,000 requests from 100 concurrent client threads in under 10 seconds. During the test, Tomcat server created more than 100 servlet threads to process the requests. The heap size used did not exceed 50M (see [Screen shot of the VisualVM monitor page](https://raw.githubusercontent.com/pavelfomin/examples/master/servlet-test/docs/tomcat.monitor.png)).
