@@ -54,7 +54,8 @@ public class TestServletTest {
 			e.printStackTrace();
 		}
 		
-		System.out.println(String.format("Test %s.testGetLoad elapsed: %s average: %f.3 threads: %s requests per thread: %s", getClass().getName(), elapsedTime.get(), (double)elapsedTime.get() / (THREADS * REQUESTS), THREADS, REQUESTS));
+		System.out.println(String.format("Test %s.testGetLoad elapsed: %,d(ms) average response: %.3f(ms) threads: %,d requests per thread: %,d", 
+				getClass().getName(), elapsedTime.get(), (double)elapsedTime.get() / (THREADS * REQUESTS), THREADS, REQUESTS));
 	}
 	
 	
