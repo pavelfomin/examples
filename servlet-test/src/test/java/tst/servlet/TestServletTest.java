@@ -17,8 +17,12 @@ import org.junit.Test;
 
 public class TestServletTest {
 	private static final String URL = "http://localhost:8080/servlet-test";
+//	private static final String URL = "http://localhost:8080/spring-controller-test";
+//	private static final String URL = "http://localhost:8080/spring-controller-test-1.0.0";
+//	private static final String URL = "http://localhost:8080/grails-test";
+//	private static final String URL = "http://localhost:8080/grails-test-0.1";
 	private static final int THREADS = 100;
-	private static final int REQUESTS = 100000;
+	private static final int REQUESTS = 2000;
 	
 	@Test
 	public void testGet() throws Exception {
@@ -73,7 +77,8 @@ public class TestServletTest {
 			response.append(line);
 		}
 		reader.close();
-		
+		connection.disconnect();
+
 		long elapsed = System.currentTimeMillis() - start;
 		
 		assertNotNull(response);
