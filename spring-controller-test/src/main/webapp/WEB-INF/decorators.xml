@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<decorators defaultdir="/decorators">
+    <decorator name="main" page="main.jsp">
+        <pattern>/*</pattern>
+    </decorator>
+    <decorator name="nowrap" page="nowrap.jsp">
+        <pattern>*ajax.do</pattern>
+    </decorator>
+    <decorator name="login" page="login.jsp">
+        <pattern>/*login.*</pattern>
+    </decorator>
+</decorators>
