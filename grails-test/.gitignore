@@ -1,0 +1,21 @@
+# build artifacts...
+target/
+
+*.class
+
+# cobertura files...
+*.ser
+
+# logs...
+logs/
+*.log
+
+# eclipse project files and build artifacts...
+.classpath
+.project
+.settings
+.springBeans
+src/.link_to_grails_plugins/
+src/target-eclipse/
+inlineplugins/externalserivces/.link_to_grails_plugins/
+inlineplugins/externalserivces/target-eclipse/
