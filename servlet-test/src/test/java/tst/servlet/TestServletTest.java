@@ -11,6 +11,7 @@ import java.net.URL;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicLong;
 
 import org.junit.Test;
 
@@ -27,6 +28,8 @@ public class TestServletTest {
 	@Test
 	public void testGetLoad() {
 		
+		final AtomicLong elapsedTime = new AtomicLong();
+		
 		ExecutorService executor = Executors.newFixedThreadPool(THREADS);
 
 		for (int i = 0; i < REQUESTS; i++) {
@@ -34,7 +37,8 @@ public class TestServletTest {
 				executor.execute(new Runnable() {
 					public void run() {
 						try {
-							sendRequest();
+							long elapsed = sendRequest();
+							elapsedTime.addAndGet(elapsed);
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
@@ -49,10 +53,14 @@ public class TestServletTest {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+		
+		System.out.println(String.format("Test %s.testGetLoad elapsed: %s average: %f.3 threads: %s requests per thread: %s", getClass().getName(), elapsedTime.get(), (double)elapsedTime.get() / (THREADS * REQUESTS), THREADS, REQUESTS));
 	}
 	
 	
-	private void sendRequest() throws Exception {
+	private long sendRequest() throws Exception {
+		long start = System.currentTimeMillis();
+		
 		HttpURLConnection connection = (HttpURLConnection) new URL(URL).openConnection();
 		
 		BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
@@ -65,8 +73,12 @@ public class TestServletTest {
 		}
 		reader.close();
 		
+		long elapsed = System.currentTimeMillis() - start;
+		
 		assertNotNull(response);
 		assertTrue(response.length() > 0);
-		System.out.println(getClass().getName() + ".testGet: "+ response);
+		System.out.println(String.format("Test %s received reponse: %s elapsed: %s", getClass().getName(), response.substring(0, Math.min(50, response.length())), elapsed));
+		
+		return elapsed;
 	}
 }
