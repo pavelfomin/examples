@@ -4,3 +4,5 @@ Results of tst.servlet.TestServletTest.testGetLoad with 100 threads and 2,000 re
 
 |=Response Time per request in ms (dev mode)|=Response Time per request in ms (war)|
 |0.264 | 0.178 |
+
+Screen shot of the [[VisualVM monitor page|https://raw.githubusercontent.com/pavelfomin/examples/master/spring-controller-test/docs/tomcat.monitor.png]].
