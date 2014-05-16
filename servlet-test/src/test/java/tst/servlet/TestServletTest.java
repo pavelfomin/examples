@@ -21,6 +21,7 @@ public class TestServletTest {
 //	private static final String URL = "http://localhost:8080/spring-controller-test-1.0.0";
 //	private static final String URL = "http://localhost:8080/grails-test";
 //	private static final String URL = "http://localhost:8080/grails-test-0.1";
+//	private static final String URL = "http://localhost:3000/nodejs-test";
 	private static final int THREADS = 100;
 	private static final int REQUESTS = 2000;
 	
