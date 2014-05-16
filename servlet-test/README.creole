@@ -6,5 +6,5 @@ Application deployed in Tomcat 7 with the default startup parameters processed 1
 
 Results of tst.servlet.TestServletTest.testGetLoad with 100 threads processing 2,000 requests
 
-|=Response Time per request in ms (dev mode)|
+|=Response Time per request in seconds (dev mode)|
 |0.050 |

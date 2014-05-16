@@ -2,5 +2,5 @@
 
 Results of tst.servlet.TestServletTest.testGetLoad with 100 threads processing 2,000 requests
 
-|=Response Time per request in ms|
+|=Response Time per request in seconds|
 |0.304 |

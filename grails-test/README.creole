@@ -2,7 +2,7 @@
 
 Results of tst.servlet.TestServletTest.testGetLoad with 100 threads processing 2,000 requests
 
-|=Response Time per request in ms (dev mode)|=Response Time per request in ms (war)|
+|=Response Time per request in seconds (dev mode)|=Response Time per request in seconds (war)|
 |8.530 | 1.707 |
 
 Screen shot of the [[https://raw.githubusercontent.com/pavelfomin/examples/master/grails-test/docs/tomcat.monitor.png|VisualVM monitor page]].
