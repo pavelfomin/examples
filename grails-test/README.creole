@@ -1,6 +1,6 @@
 ==Grails test
 
-Results of tst.servlet.TestServletTest.testGetLoad with 100 threads and 2,000 requests per thread
+Results of tst.servlet.TestServletTest.testGetLoad with 100 threads processing 2,000 requests
 
 |=Response Time per request in ms (dev mode)|=Response Time per request in ms (war)|
 |8.530 | 1.707 |

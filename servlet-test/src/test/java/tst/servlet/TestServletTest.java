@@ -3,6 +3,7 @@ package tst.servlet;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -34,21 +35,27 @@ public class TestServletTest {
 	public void testGetLoad() {
 		
 		final AtomicLong elapsedTime = new AtomicLong();
+		final AtomicLong errorsCount = new AtomicLong();
 		
 		ExecutorService executor = Executors.newFixedThreadPool(THREADS);
 
 		for (int i = 0; i < REQUESTS; i++) {
-			
-				executor.execute(new Runnable() {
-					public void run() {
-						try {
-							long elapsed = sendRequest();
-							elapsedTime.addAndGet(elapsed);
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
+
+			executor.execute(new Runnable() {
+				public void run() {
+					try {
+						long elapsed = sendRequest();
+						elapsedTime.addAndGet(elapsed);
+					} catch (Exception e) {
+						e.printStackTrace();
+						errorsCount.addAndGet(1);
 					}
-				});
+				}
+			});
+
+			if (errorsCount.get() > 0) {
+				break;
+			}
 		}
 
 		executor.shutdown();
@@ -58,7 +65,11 @@ public class TestServletTest {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		
+
+		if (errorsCount.get() > 0) {
+			fail("Processing errors occured: " + errorsCount);
+		}
+
 		System.out.println(String.format("Test %s.testGetLoad elapsed: %,d(ms) average response: %.3f(ms) threads: %,d requests per thread: %,d", 
 				getClass().getName(), elapsedTime.get(), (double)elapsedTime.get() / (THREADS * REQUESTS), THREADS, REQUESTS));
 	}

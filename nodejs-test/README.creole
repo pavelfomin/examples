@@ -1,6 +1,6 @@
 ==Node.js test with Express
 
-Results of tst.servlet.TestServletTest.testGetLoad with 100 threads and 2,000 requests per thread
+Results of tst.servlet.TestServletTest.testGetLoad with 100 threads processing 2,000 requests
 
 |=Response Time per request in ms|
 |0.304 |
