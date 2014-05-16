@@ -1,5 +1,4 @@
-Servlet Test
-===========
+==Servlet Test
 
 Simple jee web project with one servlet and a test case that simulates the http load.
 
