@@ -4,6 +4,12 @@ Simple jee web project with one servlet and a test case that simulates the http 
 
 Application deployed in Tomcat 7 with the default startup parameters processed 100,000 requests from 100 concurrent client threads in under 10 seconds. During the test, Tomcat server created more than 100 servlet threads to process the requests. The heap size used did not exceed 50M (see [[https://raw.githubusercontent.com/pavelfomin/examples/master/servlet-test/docs/tomcat.monitor.png|Screen shot of the VisualVM monitor page]]).
 
+Environment
+|Processor| Intel Core i5-3230M CPU @ 2.60 GHz|
+|Memory| 8G|
+|OS | Windows 7 Enterprise, 64 bit|
+
+
 Results of tst.servlet.TestServletTest.testGetLoad with 100 threads processing 2,000 requests
 
 |=Response Time per request in seconds (dev mode)|
