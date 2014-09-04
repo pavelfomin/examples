@@ -13,8 +13,8 @@
 
     <repositories>
         <repository>
-            <id>SB11-Remote-Mirror-Repo</id>
-            <name>SB11 Remote Mirror Repo</name>
+            <id>Remote-Mirror-Repo</id>
+            <name>Remote Mirror Repo</name>
             <url>http://repo.maven.apache.org</url>
         </repository>
     </repositories>
