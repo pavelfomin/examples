@@ -1,0 +1,1 @@
+<h1>Rabbit MQ POC View</h1>
