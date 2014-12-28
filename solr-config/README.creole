@@ -1,0 +1,23 @@
+=Solr Setup.
+* Download and install latest Solr (e.g. solr-4.10.2) from http://lucene.apache.org/solr/mirrors-solr-latest-redir.html.
+* Create new configution directory $SOLR_HOME/examples/my-test
+* Create new multi core configuration and here is my Solr configuration $SOLR_HOME/examples/my-test/solr.xml
+{{{
+<solr persistent="false">
+  <cores adminPath="/admin/cores" host="${host:}" hostPort="${jetty.port:8983}" hostContext="${hostContext:solr}">
+    <core name="test-nutch" instanceDir="test-nutch" />
+    
+    <shardHandlerFactory name="shardHandlerFactory" class="HttpShardHandlerFactory">
+      <str name="urlScheme">${urlScheme:}</str>
+    </shardHandlerFactory>
+  </cores>
+        
+</solr>
+}}}
+* Copy the content of this project under $SOLR_HOME/examples/my-test.
+
+Solr server can be accessed at http://localhost:8983/solr.
+
+java -Dsolr.solr.home=mytest -jar start.jar
+
+For general examples on standard solr configuration, see the "solr" directory.
