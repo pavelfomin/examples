@@ -1,1 +1,21 @@
 =Example of using Solr search with spring-data.
+
+==Project Setup.
+This project depends on the [[https://github.com/pavelfomin/examples/tree/master/shared-pom|shared-pom]] project.
+It uses the //buildnumber-maven-plugin// and needs to have a //buildNumber// property specified in the local maven profile for development mode.
+
+Example of $USER_HOME/.m2/settings.xml
+{{{
+<profile>
+    <id>local-maven-dev</id>
+        <properties>
+	        <!-- Default build number to set when skipping the buildnumber-maven-plugin execution -->
+            <buildNumber>dev</buildNumber>
+        </properties>
+</profile>
+}}}
+
+If Eclipse IDE is used then the //active maven profile// can be specified via Project -> Properties -> Maven.
+
+Once deployed in the app server, the local url for the setup above should be http://localhost:8080/solr-spring-data-test-1.0.1-dev/.
+==
