@@ -20,20 +20,6 @@ If Eclipse IDE is used then the //active maven profile// can be specified via Pr
 Once deployed in the app server, the local url for the setup above should be http://localhost:8080/solr-spring-data-test-1.0.1-dev/.
 
 ==Solr Setup.
-* Download and install latest Solr (e.g. solr-4.10.2) from http://lucene.apache.org/solr/mirrors-solr-latest-redir.html.
-* Create new configution directory $SOLR_HOME/examples/my-test
-* Create new multi core configuration and here is my Solr configuration $SOLR_HOME/examples/my-test/solr.xml
-{{{
-<solr persistent="false">
-  <cores adminPath="/admin/cores" host="${host:}" hostPort="${jetty.port:8983}" hostContext="${hostContext:solr}">
-    <core name="test-nutch" instanceDir="test-nutch" />
-    
-    <shardHandlerFactory name="shardHandlerFactory" class="HttpShardHandlerFactory">
-      <str name="urlScheme">${urlScheme:}</str>
-    </shardHandlerFactory>
-  </cores>
-        
-</solr>
-}}}
+See https://github.com/pavelfomin/examples/tree/master/solr-config for Solr setup details.
 
 ==Nutch Setup.
