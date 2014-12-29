@@ -17,8 +17,8 @@
 * Copy the content of this project under $SOLR_HOME/examples/my-test.
 
 ===Content of conf
-** conf/schema.xml - Nutch's document schema
-** conf/*.xml - Solr configuration files that are referenced from schema.xml and solrconfig.xml (copied from default Solr configuration).
+* conf/schema.xml - Nutch's document schema
+* conf/*.xml - Solr configuration files that are referenced from schema.xml and solrconfig.xml (copied from default Solr configuration).
 
 For general examples on standard solr configuration, see the "solr" directory.
 
