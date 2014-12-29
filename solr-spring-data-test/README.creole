@@ -57,8 +57,8 @@ See https://github.com/pavelfomin/examples/tree/master/solr-config for Solr setu
 More details are at http://wiki.apache.org/nutch/NutchTutorial#A4._Setup_Solr_for_search
 
 === Running Nutch
-{code}
+{{{
 bin/crawl $my_nutch_crawl_dir/urls $my_nutch_crawl_dir/crawl http://127.0.0.1:8983/solr/test-nutch 2
-{code}
+}}}
 
 More details are at http://wiki.apache.org/nutch/NutchTutorial.
