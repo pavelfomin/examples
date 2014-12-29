@@ -28,6 +28,19 @@ java -Dsolr.solr.home=my-test -jar start.jar
 Solr server can be accessed at http://localhost:8983/solr.
 
 ===Solr queries
+
+====Search for documents in Solr core "test-nutch"
+Search for documents 
+* with title, url or content matching "test"
+* getting first 20 
+* with highlighting enabled 
+** and html tag <b> used for matches
+** and up to 10 snippets of highlighted matches to be returned
+
+{{{
+http://localhost:8983/solr/test-nutch/select?q=%28title%3A*test*%29+OR+%28content%3A*test*%29+OR+%28url%3A*test*%29&start=0&rows=15&hl=true&hl.fl=title&hl.fl=content&hl.fl=url&hl.simple.pre=%3Cb%3E&hl.simple.post=%3C%2Fb%3E&hl.snippets=10
+}}}
+
 ====Delete all of the documents from Solr core "test-nutch"
 {{{
 http://localhost:8983/solr/test-nutch/update?stream.body=<delete><query>*:*</query></delete>&commit=true
