@@ -1,8 +1,8 @@
 =Example of using Solr search with spring-data.
 
 ==Project Setup.
-This project depends on the [[https://github.com/pavelfomin/examples/tree/master/shared-pom|shared-pom]] project.
-It uses the //buildnumber-maven-plugin// and needs to have a //buildNumber// property specified in the local maven profile for development mode.
+This project depends on the [[https://github.com/pavelfomin/examples/tree/master/shared-pom|shared-pom]] project. Make sure that both maven projects are imported in your IDE.
+This project uses the //buildnumber-maven-plugin// and needs to have a //buildNumber// property specified in the local maven profile for development mode.
 
 Example of $USER_HOME/.m2/settings.xml
 {{{
