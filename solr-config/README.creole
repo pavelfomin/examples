@@ -26,3 +26,9 @@ For general examples on standard solr configuration, see the "solr" directory.
 java -Dsolr.solr.home=my-test -jar start.jar
 
 Solr server can be accessed at http://localhost:8983/solr.
+
+===Solr queries
+====Delete all of the documents from Solr core "test-nutch"
+{{{
+http://localhost:8983/solr/test-nutch/update?stream.body=<delete><query>*:*</query></delete>&commit=true
+}}}
