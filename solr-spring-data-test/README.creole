@@ -50,9 +50,9 @@ See https://github.com/pavelfomin/examples/tree/master/solr-config for Solr setu
 
 ==== Solr schema edits
 * Added the _version_ field into the scema.xml.
-{code:xml}
+{{{
 <field name="_version_" type="long" indexed="true" stored="true"/>
-{code}
+}}}
 
 More details are at http://wiki.apache.org/nutch/NutchTutorial#A4._Setup_Solr_for_search
 
