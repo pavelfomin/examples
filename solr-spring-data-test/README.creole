@@ -23,3 +23,42 @@ Once deployed in the app server, the local url for the setup above should be htt
 See https://github.com/pavelfomin/examples/tree/master/solr-config for Solr setup details.
 
 ==Nutch Setup.
+* Download and install Apache Nutch 1.9 from http://nutch.apache.org/downloads.html.
+* //On Windows only// install Cygwin. Make sure that JAVA_HOME is pointing to the correct java runtime.
+* Modify _conf/nutch-site.xml_
+{{{
+<configuration>
+  <property>
+	<name>http.agent.name</name>
+	<value>My Nutch Spider</value>
+  </property>
+  <!-- For Windows OS only -->
+  <property>
+	<name>fs.file.impl</name>
+	<value>com.conga.services.hadoop.patch.HADOOP_7682.WinLocalFileSystem</value>
+	<description>Enables patch for issue HADOOP-7682 on Windows</description>
+  </property>
+</configuration>
+}}}
+* The file _conf/regex-urlfilter.txt_ will provide Regular Expressions that allow Nutch to filter and narrow the types of web resources to crawl and download. Optionally restrict crawl pattern there.
+* mkdir -p $my_nutch_crawl_dir/urls
+** echo "http://localhost:8080/test-site" > $my_nutch_crawl_dir/urls/seed.txt
+* mkdir -p $my_nutch_crawl_dir/crawl
+
+=== Configure Solr to use Nutch schema
+See https://github.com/pavelfomin/examples/tree/master/solr-config for Solr setup details. The schema.xml file there has been copied from Nutch.
+
+==== Solr schema edits
+* Added the _version_ field into the scema.xml.
+{code:xml}
+<field name="_version_" type="long" indexed="true" stored="true"/>
+{code}
+
+More details are at http://wiki.apache.org/nutch/NutchTutorial#A4._Setup_Solr_for_search
+
+=== Running Nutch
+{code}
+bin/crawl $my_nutch_crawl_dir/urls $my_nutch_crawl_dir/crawl http://127.0.0.1:8983/solr/test-nutch 2
+{code}
+
+More details are at http://wiki.apache.org/nutch/NutchTutorial.
