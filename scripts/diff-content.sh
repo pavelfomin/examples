@@ -2,16 +2,17 @@
 # Returns a diff status of the comparison between the current content of the http response and a previously saved one. 
 ##
 
-set -x #echo commands
+#set -x #echo commands
 set -e #exit on error
 
 if [ -z "$1" ]
 then
-	echo "Usage: $0 <url>"
+	echo "Usage: $0 <url> [<sed expression>]"
 	exit 1
 fi
 
 url=$1
+sedExpression=$2
 
 contentBaseDir=${TMP}
 contentFileName=content.html
@@ -27,6 +28,13 @@ diffFile=${historyDir}/${contentFileName}.${dateTime}.diff
 mkdir -p ${historyDir}
 
 curl -v --fail "${url}" 2>${logFile} 1>${currentContent} 
+
+if [ ${sedExpression} ]
+then
+	mv ${currentContent} ${currentContent}.raw
+	sed -e "${sedExpression}" ${currentContent}.raw > ${currentContent}
+	rm  ${currentContent}.raw
+fi
 
 if [ -e "${previousContent}" ]
 then
